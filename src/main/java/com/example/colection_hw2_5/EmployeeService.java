@@ -1,7 +1,5 @@
 package com.example.colection_hw2_5;
-
-
-import java.util.List;
+import java.util.Collection;
 
 public interface EmployeeService {
 
@@ -11,5 +9,5 @@ public interface EmployeeService {
 
     Employee searchEmployee(String firstName, String lastName);
 
-    List<Employee> printAllEmployee();
+    Collection<Employee> printAllEmployee();
 }

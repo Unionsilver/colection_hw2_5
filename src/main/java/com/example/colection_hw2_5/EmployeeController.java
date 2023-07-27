@@ -3,7 +3,6 @@ package com.example.colection_hw2_5;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 
 @RestController
 @RequestMapping("/firstPage")
