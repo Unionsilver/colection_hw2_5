@@ -1,5 +1,6 @@
-package com.example.colection_hw2_5;
+package com.example.colection_hw2_5.Service;
 
+import com.example.colection_hw2_5.Employee.Employee;
 import com.example.colection_hw2_5.Exception.EmployeeAlreadyAddedException;
 import com.example.colection_hw2_5.Exception.EmployeeNotFoundException;
 import com.example.colection_hw2_5.Exception.EmployeeStorageIsFullException;
@@ -18,12 +19,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee addEmployee(String firstName, String lastName) {
+    public Employee addEmployee(String firstName, String lastName, int department, double salary) {
 
         if (employeeMap.size() == EMPLOYEE_MAX_SIZE)
             throw new EmployeeStorageIsFullException("Превышен лимит сотрудников");
 
-        Employee employee = new Employee(firstName, lastName);
+        Employee employee = new Employee(firstName, lastName, department, salary);
         String key = firstName + lastName;
         if (employeeMap.containsKey(key))
             throw new EmployeeAlreadyAddedException("Одинаковый сотрудник");
@@ -31,10 +32,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         return employee;
     }
 
+
     @Override
-    public Employee removeEmployee(String firstName, String lastName) {
-        Employee employee = employeeMap.remove(firstName+lastName);
-            if (employee == null) {
+    public Employee removeEmployee(String firstName, String lastName, int department, double salary) {
+        Employee employee = employeeMap.remove(firstName + lastName + department + salary);
+        if (employee == null) {
             throw new EmployeeNotFoundException("Не найден сотрудник что бы удалить");
 
         }
@@ -43,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee searchEmployee(String firstName, String lastName) {
-        Employee employee = employeeMap.get(firstName+lastName);
+        Employee employee = employeeMap.get(firstName + lastName);
         if (employee == null) {
             throw new EmployeeNotFoundException("Не найден сотрудник в поиске");
         }
