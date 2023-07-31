@@ -1,9 +1,5 @@
 package com.example.colection_hw2_5.Employee;
-
-import org.springframework.web.bind.annotation.ResponseStatus;
-
 import java.util.Objects;
-@ResponseStatus
 
 public class Employee {
     private final String firstName;

@@ -7,6 +7,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Collection;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/departments")
 public class DepartmentController {
@@ -24,11 +28,11 @@ public class DepartmentController {
         return departmentService.findMinSalaryEm(department);
     }
     @GetMapping("/all-size")
-    public Employee getAllEmployee(@RequestParam int department) {
-        return (Employee) departmentService.getAllEm(department);
+    public Collection<Employee> getAllEmployee(@RequestParam int department) {
+        return departmentService.getAllEm(department);
     }
     @GetMapping("/all")
-    public Employee getAllEmployee() {
-        return (Employee) departmentService.getAllGroupingByDepartmentEm();
+    public Map<Integer, List<Employee>> getAllEmployeeTotal() {
+        return departmentService.getAllGroupingByDepartmentEm();
     }
 }
