@@ -1,4 +1,4 @@
-package com.example.colection_hw2_5.Employee;
+package com.example.colection_hw2_5.employee;
 import java.util.Objects;
 
 public class Employee {

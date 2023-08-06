@@ -1,5 +1,5 @@
-package com.example.colection_hw2_5.Service;
-import com.example.colection_hw2_5.Employee.Employee;
+package com.example.colection_hw2_5.service;
+import com.example.colection_hw2_5.employee.Employee;
 
 import java.util.Collection;
 

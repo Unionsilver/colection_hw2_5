@@ -1,7 +1,8 @@
-package com.example.colection_hw2_5.Controller;
+package com.example.colection_hw2_5.controller;
 
-import com.example.colection_hw2_5.Employee.Employee;
-import com.example.colection_hw2_5.Service.EmployeeService;
+import com.example.colection_hw2_5.employee.Employee;
+import com.example.colection_hw2_5.service.EmployeeService;
+import com.example.colection_hw2_5.util.EmployeeNameValidator;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
@@ -20,6 +21,8 @@ public class EmployeeController {
                         @RequestParam String lastName,
                         @RequestParam int department,
                         @RequestParam double salary) {
+        EmployeeNameValidator.checkName(firstName, lastName);
+
         return employeeService.addEmployee(firstName, lastName,department, salary );
     }
 
@@ -28,12 +31,16 @@ public class EmployeeController {
                            @RequestParam String lastName,
                            @RequestParam int department,
                            @RequestParam double salary) {
+        EmployeeNameValidator.checkName(firstName, lastName);
+
         return employeeService.removeEmployee(firstName, lastName,department, salary);
     }
 
     @GetMapping(path = "/find")
     public Employee find(@RequestParam String firstName,
                          @RequestParam String lastName) {
+        EmployeeNameValidator.checkName(firstName, lastName);
+
         return employeeService.searchEmployee(firstName, lastName);
     }
 

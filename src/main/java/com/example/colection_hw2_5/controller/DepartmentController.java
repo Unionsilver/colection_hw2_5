@@ -1,12 +1,11 @@
-package com.example.colection_hw2_5.Controller;
+package com.example.colection_hw2_5.controller;
 
-import com.example.colection_hw2_5.Employee.Employee;
-import com.example.colection_hw2_5.Service.DepartmentService;
+import com.example.colection_hw2_5.employee.Employee;
+import com.example.colection_hw2_5.service.DepartmentService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;

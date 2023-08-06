@@ -1,9 +1,10 @@
-package com.example.colection_hw2_5.Service;
+package com.example.colection_hw2_5.service;
 
-import com.example.colection_hw2_5.Employee.Employee;
-import com.example.colection_hw2_5.Exception.EmployeeAlreadyAddedException;
-import com.example.colection_hw2_5.Exception.EmployeeNotFoundException;
-import com.example.colection_hw2_5.Exception.EmployeeStorageIsFullException;
+import com.example.colection_hw2_5.employee.Employee;
+import com.example.colection_hw2_5.exception.EmployeeAlreadyAddedException;
+import com.example.colection_hw2_5.exception.EmployeeNotFoundException;
+import com.example.colection_hw2_5.exception.EmployeeStorageIsFullException;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -24,7 +25,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         if (employeeMap.size() == EMPLOYEE_MAX_SIZE)
             throw new EmployeeStorageIsFullException("Превышен лимит сотрудников");
 
-        Employee employee = new Employee(firstName, lastName, department, salary);
+        Employee employee = new Employee(
+                StringUtils.capitalize(firstName),
+                StringUtils.capitalize(lastName),
+                department,
+                salary);
         String key = firstName + lastName;
         if (employeeMap.containsKey(key))
             throw new EmployeeAlreadyAddedException("Одинаковый сотрудник");
