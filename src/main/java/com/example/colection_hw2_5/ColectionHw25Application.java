@@ -1,4 +1,4 @@
-package com.example.colection_hw2_5.main;
+package com.example.colection_hw2_5;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
