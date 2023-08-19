@@ -33,7 +33,7 @@ public class EmployeeController {
                            @RequestParam double salary) {
         EmployeeNameValidator.checkName(firstName, lastName);
 
-        return employeeService.removeEmployee(firstName, lastName,department, salary);
+        return employeeService.removeEmployee(firstName, lastName);
     }
 
     @GetMapping(path = "/find")

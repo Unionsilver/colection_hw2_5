@@ -9,11 +9,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.*;
 
+
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
     private final Map<String, Employee> employeeMap;
 
-    private static final int EMPLOYEE_MAX_SIZE = 10;
+    private static final int EMPLOYEE_MAX_SIZE = 2;
 
     public EmployeeServiceImpl() {
         this.employeeMap = new HashMap<>();
@@ -30,7 +31,8 @@ public class EmployeeServiceImpl implements EmployeeService {
                 StringUtils.capitalize(lastName),
                 department,
                 salary);
-        String key = firstName + lastName;
+        String key = generateKey(firstName, lastName);
+
         if (employeeMap.containsKey(key))
             throw new EmployeeAlreadyAddedException("Одинаковый сотрудник");
         employeeMap.put(key, employee);
@@ -39,8 +41,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 
     @Override
-    public Employee removeEmployee(String firstName, String lastName, int department, double salary) {
-        Employee employee = employeeMap.remove(firstName + lastName + department + salary);
+    public Employee removeEmployee(String firstName, String lastName) {
+        Employee employee = employeeMap.remove(generateKey(firstName, lastName));
         if (employee == null) {
             throw new EmployeeNotFoundException("Не найден сотрудник что бы удалить");
 
@@ -50,7 +52,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Employee searchEmployee(String firstName, String lastName) {
-        Employee employee = employeeMap.get(firstName + lastName);
+        Employee employee = employeeMap.get(generateKey(firstName, lastName));
         if (employee == null) {
             throw new EmployeeNotFoundException("Не найден сотрудник в поиске");
         }
@@ -60,5 +62,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Collection<Employee> printAllEmployee() {
         return employeeMap.values();
+    }
+    private String generateKey(String firstName, String lastName){
+        return firstName + lastName;
+
     }
 }
