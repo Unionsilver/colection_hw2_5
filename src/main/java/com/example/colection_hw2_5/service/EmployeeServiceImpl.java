@@ -63,7 +63,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Collection<Employee> printAllEmployee() {
         return employeeMap.values();
     }
-    private String generateKey(String firstName, String lastName){
+
+    private String generateKey(String firstName, String lastName) {
         return firstName + lastName;
 
     }
